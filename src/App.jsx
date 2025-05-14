@@ -20,7 +20,7 @@ function App() {
     }));
   }
 
-  function submitData(e) {
+  function submitData(event) {
     event.preventDefault()
     
   }
