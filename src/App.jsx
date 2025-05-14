@@ -20,12 +20,17 @@ function App() {
     }));
   }
 
+  function submitData(e) {
+    event.preventDefault()
+    
+  }
+  
   return (
 
     <>
       <h1>Post Form</h1>
       
-      <form>
+    <form onSubmit={submitData}>
         <label htmlFor="author">author</label>
         <input id="author" type="text" name="author" value={formData.author} onChange={handleFormData} /> 
         <br />
@@ -39,7 +44,8 @@ function App() {
         <br />
 
         <label htmlFor="author">public</label>
-        <input id="public" type="checkbox" name="public" checked={formData.public} onChange={handleFormData} />
+        <input id="public" type="checkbox" name="public" checked={formData.public} onChange={handleFormData} /> <br />
+        <button>submit</button>
 
       </form>
     </>
