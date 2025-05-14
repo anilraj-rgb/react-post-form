@@ -1,35 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  
+  const [formData, setFormData] = useState({
+    author: "",
+    title: "",
+    body: "",
+    public: false
+  })
+
+  function handleFormData(e) {
+    const value =
+      e.target.type === "checkbox" ?
+        e.target.checked : e.target.value;
+    setFormData((formData) => ({
+      ...formData,
+      [e.target.name]: value,
+    }));
+  }
 
   return (
+
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Post Form</h1>
+      
+      <form>
+        <label htmlFor="author">author</label>
+        <input id="author" type="text" name="author" value={formData.author} onChange={handleFormData} /> 
+        <br />
+
+        <label htmlFor="title">title</label>
+        <input id="title" type="text" name="title" value={formData.title} onChange={handleFormData} />
+        <br />
+
+        <label htmlFor="body">body</label>
+        <input id="body" type="text" name="body" value={formData.body} onChange={handleFormData} />
+        <br />
+
+        <label htmlFor="author">public</label>
+        <input id="public" type="checkbox" name="public" checked={formData.public} onChange={handleFormData} />
+
+      </form>
     </>
+
   )
 }
-
-export default App
