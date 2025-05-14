@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import axios from 'axios';
+
+const endpoint = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts"
 
 function App() {
   
@@ -23,6 +26,9 @@ function App() {
   function submitData(event) {
     event.preventDefault()
     
+    axios.post(endpoint, formData)
+    .then(response => console.log(response.data))
+  
   }
   
   return (
